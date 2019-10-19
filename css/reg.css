@@ -104,139 +104,50 @@
   body {
     overflow-x: hidden;
   }
-  
-  #wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-  
-  #wrapper.toggled {
-    padding-left: 250px;
-  }
-  
-  #sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 250px;
-    width: 0;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background: #000;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-  
-  #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-  }
-  
-  #page-content-wrapper {
+ 
+  .main-div, .loggedin-div {
     width: 100%;
-    position: absolute;
-    padding: 15px;
+    margin: 0px auto;
+    margin-top: 15px;
+    padding: 20px;
+    display: none;
   }
   
-  #wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-  }
-  
-  
-  /* Sidebar Styles */
-  
-  .sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-  }
-  
-  .sidebar-nav li a {
+  .main-div input {
     display: block;
-    text-decoration: none;
-    color: #999999;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
   }
   
-  .sidebar-nav li a:hover {
-    text-decoration: none;
+  .main-div input:focus {
+    border: 1px solid #777;
+  }
+  
+  .main-div button, .loggedin-div button {
+    background: #5d8ffc;
     color: #fff;
-    background: rgba(255, 255, 255, 0.2);
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
+    border: 1px solid #5d8ffc;
+    border-radius: 5px;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
   }
   
-  .sidebar-nav li a:active, .sidebar-nav li a:focus {
-    text-decoration: none;
-  #sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
+  .main-div button:hover, .loggedin-div button:hover {
+    background: #fff;
+    color: #5d8ffc;
+    border: 1px solid #5d8ffc;
+    cursor: pointer;
   }
-  
-  .sidebar-nav>.sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-  #sidebar-wrapper .list-group {
-    width: 15rem;
-  }
-  
-  .sidebar-nav>.sidebar-brand a {
-    color: #999999;
-  #page-content-wrapper {
-    min-width: 100vw;
-  }
-  
-  .sidebar-nav>.sidebar-brand a:hover {
-    color: #fff;
-    background: none;
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
-  }
-  
-  @media(min-width:768px) {
-    #wrapper {
-      padding-left: 0;
-    }
-    #wrapper.toggled {
-      padding-left: 250px;
-    }
-  @media (min-width: 768px) {
-    #sidebar-wrapper {
-      width: 0;
-    }
-    #wrapper.toggled #sidebar-wrapper {
-      width: 250px;
-      margin-left: 0;
-    }
-  
-    #page-content-wrapper {
-      padding: 20px;
-      position: relative;
-      min-width: 0;
-      width: 100%;
-    }
-    #wrapper.toggled #page-content-wrapper {
-      position: relative;
-      margin-right: 0;
-  
-    #wrapper.toggled #sidebar-wrapper {
-      margin-left: -15rem;
-    }
-  }
+} 

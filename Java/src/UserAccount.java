@@ -5,7 +5,7 @@ public class UserAccount {
 	private String email;
 	private String password;
 	private String username;
-	private int type;
+	private int type; //0 is user, 1 is breeder
 	private boolean loggedIn;
 	
 	public void logMeIn() {
@@ -13,24 +13,24 @@ public class UserAccount {
 		char ch;
 		loggedIn = true;
 		
-		if (!userExists()) {
+		if (!userExists()) { //if the user entered doesn't exist
 			System.out.println("User doesn't exist, create an account? (y/n)");
 			ch = in.nextLine().charAt(0);
 			if (ch == 'y') {
 				System.out.print("Email: ");
 				email = in.nextLine();
-				createAccount();
+				createAccount(); //create new account with given info and email
 			} else
-				loggedIn = false;
+				loggedIn = false; //did not create account, tries again
 		} else {
-			while (!checkPass()) {
+			while (!checkPass()) { //is the password wrong?
 				System.out.println("Wrong password, try again...");
 				System.out.print("Password: ");
 				password = in.nextLine();
 			}
-			type = checkType();
+			type = checkType(); //gets stored account type
 		}
-		if (loggedIn)
+		if (loggedIn) //if logged
 			System.out.println("Logged into account with username: " + username);
 	}
 	
@@ -38,20 +38,37 @@ public class UserAccount {
 		loggedIn = false;
 	}
 	
+	public void newDog(int dogNum) {
+		File file = new File(username + "/dogs.fch");
+		BufferedWriter out;
+		
+		try {
+			if(!file.exists())
+				out = new BufferedWriter(new FileWriter(file));
+			else
+				out = new BufferedWriter(new FileWriter(file, true));
+			out.write("d" + String.format("%04d", dogNum));
+			out.newLine();
+			out.close();
+		} catch (IOException e) {
+			System.out.println("Error with IO in UserAccount.newDog");
+		}
+	}
+	
 	public UserAccount(String email, int type) {
-		this(type);
+		this();
 		this.email = email;
+		this.type = type;
 		createAccount();
 	}
 	
-	public UserAccount(int type) {
+	public UserAccount() {
 		Scanner in = new Scanner(System.in);
 		
 		System.out.print("Username: ");
 		username = in.nextLine();
 		System.out.print("Password: ");
 		password = in.nextLine();
-		this.type = type;
 	}
 	
 	private boolean userExists() {
@@ -72,8 +89,9 @@ public class UserAccount {
 			in = new BufferedReader(new FileReader(username + "/account.fch"));
 			if (in.readLine().equals(password))
 				correctPass = true;
+			in.close();
 		} catch (IOException e) {
-			System.out.println("Error with IO");
+			System.out.println("Error with IO in UserAccount.checkPass");
 		}
 		return correctPass;
 	}
@@ -87,15 +105,15 @@ public class UserAccount {
 			in.readLine();
 			in.readLine();
 			temp = Integer.parseInt(in.readLine());
+			in.close();
 		} catch (IOException e) {
-			System.out.println("Error with IO");
+			System.out.println("Error with IO in UserAccount.checkType");
 		}
 		return temp;
 	}
 	
 	private void createAccount() {
 		BufferedWriter out;
-		BufferedReader in;
 		
 		try {
 			new File(username).mkdir();
@@ -108,7 +126,7 @@ public class UserAccount {
 			out.newLine();
 			out.close();
 		} catch (IOException e) {
-			System.out.println("Error with IO");
+			System.out.println("Error with IO in UserAccount.createAccount");
 		}
 	}
 	

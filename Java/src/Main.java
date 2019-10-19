@@ -3,60 +3,46 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		UserAccount user;
-		Matchmaker matcher;
+		UserAccount user; //current user account
+		Matchmaker match; //matchmaker app
+		BreederApp breed; //breeder app
 		Main m = new Main();
 		
-		user = m.login();
-		
-		if (user.isLoggedIn()) {
-			if (user.getType().equals("Breeder")) {
-				matcher = new Matchmaker(user);
-				m.match(matcher);
-			}
-		}
-	}
-	
-	public void match(Matchmaker m) {
-		Scanner in = new Scanner(System.in);
-		char ch;
-		Dog dog;
 		while (true) {
-			dog = m.nextDog();
-			if (dog == null)
-				break;
-			dog.display();
-			System.out.print("Do you like this dog? (y/n)");
-			ch = in.nextLine().charAt(0);
-			if (ch == 'y')
-				dog.addLike(m.getFile(), m.getUser());
+			user = m.login(); //login
+			System.out.println();
+			if (user.isLoggedIn()) { //is there a user logged in?
+				if (user.getType().equals("User")) { //is the account a user or breeder?
+					match = new Matchmaker(user); //open matchmaker
+				} else {
+					breed = new BreederApp(user); //open breeder app
+				}
+			}
 		}
 	}
 	
 	public UserAccount login() {
 		Scanner in = new Scanner(System.in);
 		String email;
-		char ch1, ch2;
-		UserAccount acc;
+		char ch;
+		UserAccount acc = null;
 		
 		System.out.print("Press 'c' to create account or 'l' to login: ");
-		ch1 = in.nextLine().charAt(0);
-		System.out.print("Please enter 'b' for breeder account or 'c' for customer account: ");
-		ch2 = in.nextLine().charAt(0);
-		if (ch1 == 'c') {
+		ch = in.nextLine().charAt(0);
+		if (ch == 'c') {
+			System.out.print("Please enter 'b' for breeder account or 'c' for customer account: ");
+			ch = in.nextLine().charAt(0);
 			System.out.print("Email: ");
 			email = in.nextLine();
-			if (ch2 == 'b')
-				acc = new BreederAccount(email);
+			if (ch== 'b')
+				acc = new UserAccount(email, 1); //new breeder account
 			else
-				acc = new UserAccount(email, 0);
-		} else {
-			if (ch2 == 'b')
-				acc = new BreederAccount();
-			else
-				acc = new UserAccount(0);
-		}
-		acc.logMeIn();
-		return acc;
+				acc = new UserAccount(email, 0); //new user account
+		} else if (ch == 'l' ){
+			acc = new UserAccount(); //basic user account object
+		} else
+			System.exit(0);
+		acc.logMeIn(); //this actually does the "login" part and performs checks
+		return acc; //return the logged in account
 	}
 }
