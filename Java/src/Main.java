@@ -3,19 +3,19 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		UserAccount user;
-		Matchmaker match;
-		BreederApp breed;
+		UserAccount user; //current user account
+		Matchmaker match; //matchmaker app
+		BreederApp breed; //breeder app
 		Main m = new Main();
 		
 		while (true) {
-			user = m.login();
+			user = m.login(); //login
 			System.out.println();
-			if (user.isLoggedIn()) {
-				if (user.getType().equals("User")) {
-					match = new Matchmaker(user);
+			if (user.isLoggedIn()) { //is there a user logged in?
+				if (user.getType().equals("User")) { //is the account a user or breeder?
+					match = new Matchmaker(user); //open matchmaker
 				} else {
-					breed = new BreederApp(user);
+					breed = new BreederApp(user); //open breeder app
 				}
 			}
 		}
@@ -35,14 +35,14 @@ public class Main {
 			System.out.print("Email: ");
 			email = in.nextLine();
 			if (ch== 'b')
-				acc = new UserAccount(email, 1);
+				acc = new UserAccount(email, 1); //new breeder account
 			else
-				acc = new UserAccount(email, 0);
+				acc = new UserAccount(email, 0); //new user account
 		} else if (ch == 'l' ){
-			acc = new UserAccount();
+			acc = new UserAccount(); //basic user account object
 		} else
 			System.exit(0);
-		acc.logMeIn();
-		return acc;
+		acc.logMeIn(); //this actually does the "login" part and performs checks
+		return acc; //return the logged in account
 	}
 }

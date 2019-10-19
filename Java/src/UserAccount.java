@@ -5,7 +5,7 @@ public class UserAccount {
 	private String email;
 	private String password;
 	private String username;
-	private int type;
+	private int type; //0 is user, 1 is breeder
 	private boolean loggedIn;
 	
 	public void logMeIn() {
@@ -13,24 +13,24 @@ public class UserAccount {
 		char ch;
 		loggedIn = true;
 		
-		if (!userExists()) {
+		if (!userExists()) { //if the user entered doesn't exist
 			System.out.println("User doesn't exist, create an account? (y/n)");
 			ch = in.nextLine().charAt(0);
 			if (ch == 'y') {
 				System.out.print("Email: ");
 				email = in.nextLine();
-				createAccount();
+				createAccount(); //create new account with given info and email
 			} else
-				loggedIn = false;
+				loggedIn = false; //did not create account, tries again
 		} else {
-			while (!checkPass()) {
+			while (!checkPass()) { //is the password wrong?
 				System.out.println("Wrong password, try again...");
 				System.out.print("Password: ");
 				password = in.nextLine();
 			}
-			type = checkType();
+			type = checkType(); //gets stored account type
 		}
-		if (loggedIn)
+		if (loggedIn) //if logged
 			System.out.println("Logged into account with username: " + username);
 	}
 	

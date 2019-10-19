@@ -54,6 +54,7 @@ public class DogHandler {
 				}
 				dogs[i] = new Dog(new File("dogs/" + line + "/info.fch"));
 			}
+			in.close();
 		} catch (IOException e) {
 			System.out.println("Error with IO in DogHandler.getDogs");
 		}
