@@ -4,7 +4,6 @@
 
 ## Preview
 
-[![Landing Page Preview](https://startbootstrap.com/assets/img/screenshots/themes/landing-page.png)](https://blackrockdigital.github.io/startbootstrap-landing-page/)
 
 **[View Live Preview](https://blackrockdigital.github.io/startbootstrap-landing-page/)**
 
