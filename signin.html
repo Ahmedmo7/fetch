@@ -9,6 +9,30 @@
   <meta name="author" content="">
 
   <title>FETCH</title>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCQrS1P24dL1s_VJImbD7Cp5maSoj-aCwI",
+    authDomain: "fetch-256401.firebaseapp.com",
+    databaseURL: "https://fetch-256401.firebaseio.com",
+    projectId: "fetch-256401",
+    storageBucket: "fetch-256401.appspot.com",
+    messagingSenderId: "1060993626072",
+    appId: "1:1060993626072:web:cfc3ee14b1d14a42b98cad",
+    measurementId: "G-YZGL5EG2F4"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +59,7 @@
       </nav>
   
   
-    
+      <div id="logDiv" class="main-div">
         <div class="container">
           <div class="row">
             <div class="col-lg-10 col-xl-9 mx-auto">
@@ -43,8 +67,7 @@
               
                 <div class="card-body">
                   <h5 class="card-title text-center">Sign In</h5>
-                  <form class="form-signin">
-
+                    <form>
                     <div class="form-label-group">
                       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
                       <label for="inputEmail">Email address</label>
@@ -56,19 +79,30 @@
                       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                       <label for="inputPassword">Password</label>
                     </div>
-        
+        </form>
                     
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log In</button>
+              <button onclick = "login()" class="btn btn-lg btn-primary btn-block text-uppercase" >Log In</button>
               <a class="d-block text-center mt-2 small" href="reg.html">I don't have an account</a>
               <hr class="my-4">
-                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        </div>
+
+    <div id = "userDiv" class="loggedin-div">
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 id = "userPara" class="display-4">WELCOME BACK TO FETCH!</h1>
+                  <button onclick="logout()">LOGOUT</button>
+                </div>
+            </div>
+        </div>
       </body>
+      
       <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src = "index.js"></script>
 </html>
