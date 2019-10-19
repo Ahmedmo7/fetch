@@ -11,6 +11,7 @@
   <title>FETCH</title>
  <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-auth.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -78,16 +79,13 @@
                       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                       <label for="inputPassword">Password</label>
                     </div>
-                    
-                    <div class="form-label-group">
-                      <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
-                      <label for="inputConfirmPassword">Confirm password</label>
-                    </div>
-                    
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-              <a class="d-block text-center mt-2 small" href="signin.html">I already have an acccount</a>
-              <hr class="my-4">
                   </form>
+
+            <button onClick = "handleSignUp()" class="btn btn-lg btn-primary btn-block text-uppercase" >Register</button>
+              <a class="d-block text-center mt-2 small" href="signin.html">Once, you have clicked register, click the link below!</a>
+              <a class="d-block text-center mt-2 small" href="signin.html">I already have an acccount</a>
+
+              <hr class="my-4">
                 </div>
               </div>
             </div>
