@@ -44,8 +44,10 @@
 
   <!-- Custom styles for this template -->
   <link href="css/reg.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
 
-  
+<body>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div class="container">
@@ -57,14 +59,14 @@
           <a class="btn btn-primary" href="reg.html">Login</a>
         </div>
       </nav>
-  
-  
+
+
       <div id="logDiv" class="main-div">
         <div class="container">
           <div class="row">
             <div class="col-lg-10 col-xl-9 mx-auto">
               <div class="card card-signin flex-row my-5">
-              
+
                 <div class="card-body">
                   <h5 class="card-title text-center">Sign In</h5>
                     <form>
@@ -72,15 +74,15 @@
                       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
                       <label for="inputEmail">Email address</label>
                     </div>
-                
+
                     <hr>
-      
+
                     <div class="form-label-group">
                       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                       <label for="inputPassword">Password</label>
                     </div>
-        </form>
-                    
+                    </form>
+
               <button onclick = "login()" class="btn btn-lg btn-primary btn-block text-uppercase" >Log In</button>
               <a class="d-block text-center mt-2 small" href="reg.html">I don't have an account</a>
               <hr class="my-4">
@@ -92,15 +94,67 @@
         </div>
 
     <div id = "userDiv" class="loggedin-div">
-        <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                  <h1 id = "userPara" class="display-4">WELCOME BACK TO FETCH!</h1>
-                  <button onclick="logout()">LOGOUT</button>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm text-center" style="margin: 10rem;">
+            <h4>Welcome back!</h4>
+            <button onclick="logout()" type="button" class="btn btn-primary">logout</button>
+          </div>
+          <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="img/testimonials-3.jpg">
+              <div class="card-body">
+                <p id="userPara"></p>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+
+
+
+        <!-- Footer -->
+        <footer class="footer bg-light">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item">
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li class="list-inline-item">&sdot;</li>
+                  <li class="list-inline-item">
+                    <a href="about.html">About</a>
+                  </li>
+                </ul>
+                <p class="text-muted small mb-4 mb-lg-0">FETCH 2019. HACKHARVARD.</p>
+              </div>
+              <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item mr-3">
+                    <a href="#">
+                      <i class="fab fa-facebook fa-2x fa-fw"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item mr-3">
+                    <a href="#">
+                      <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="fab fa-instagram fa-2x fa-fw"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+
       </body>
-      
+
       <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
